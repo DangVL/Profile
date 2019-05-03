@@ -7,7 +7,6 @@ import Dialogs from './components/Navbar/Dialogs/Dialogs';
 import News from './components/Navbar/News/News'
 import Music from './components/Navbar/Music/Music'
 import Settings from './components/Navbar/Settings/Settings'
-
 import { BrowserRouter, Route } from 'react-router-dom'
 
 const App = () => {
