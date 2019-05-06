@@ -9,7 +9,10 @@ const Profile = props => {
             <div><img className={s.img} src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350" alt=""></img></div>
             <div className={s.descriptionBlock}>
             <MyProfile />
-            <MyPosts posts={props.state.posts} addPost={props.addPost}/>
+            <MyPosts posts={props.profilePage.posts}
+                updateNewPostText={props.updateNewPostText}
+                newPostText={props.profilePage.newPostText}
+                addPost={props.addPost}/>
             </div>
         </div>
     )

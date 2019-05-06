@@ -15,8 +15,12 @@ const App = props => {
         <Header />
         <Navbar />
         <div className='app-wrapper-content'>
-          <Route path='/profile' render={() => <Profile state={props.state.profilePage} addPost={props.addPost} />} />
-          <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogPage} />} />
+          <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage}
+                                                        updateNewPostText={props.updateNewPostText}
+                                                        addPost={props.addPost} />} />
+          <Route path='/dialogs' render={() => <Dialogs dialogPage={props.state.dialogPage} 
+                                                        sendNewMessage={props.sendNewMessage}
+                                                        addMessage={props.addMessage} />} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
           <Route path='/settings' component={Settings} />
@@ -24,6 +28,5 @@ const App = props => {
       </div>
   );
 }
-
 
 export default App;
