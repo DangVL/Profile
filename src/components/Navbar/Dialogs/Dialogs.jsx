@@ -11,12 +11,12 @@ const Dialogs = (props) => {
     let messageContent = React.createRef()
 
     let addMessage = () => {
-        props.addMessage()        
+        props.dispatch({ type: 'ADD-MESSAGE' })        
     }
 
     let sendMessage = () => {
         let messageText = messageContent.current.value
-        props.sendNewMessage(messageText)
+        props.dispatch({ type: 'SEND-NEW-MESSAGE', content: messageText})
     }
     return (
         <div className={s.dialogs}>
