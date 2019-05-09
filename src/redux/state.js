@@ -1,3 +1,9 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_MESSAGE = 'ADD-MESSAGE'
+const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
+
+
 let store = {
     _state: {
         profilePage: {
@@ -40,7 +46,7 @@ let store = {
     },
 
     dispatch(action) {
-        if(action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: this._state.profilePage.posts[this._state.profilePage.posts.length - 1].id + 1,
                 message: this._state.profilePage.newPostText,  //this._state ???
@@ -49,10 +55,10 @@ let store = {
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = ''
             this._rerenderEntireTree(this._state)
-        }else if (action.type === 'Update-New-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.content
             this._rerenderEntireTree(this._state)
-        } else if (action.type === 'ADD-MESSAGE') {
+        } else if (action.type === ADD_MESSAGE) {
             let newMessage = {
                 id: this._state.dialogPage.messages[this._state.dialogPage.messages.length - 1].id + 1,
                 message: this._state.dialogPage.newMessageText
@@ -60,12 +66,19 @@ let store = {
             this._state.dialogPage.messages.push(newMessage)
             this._state.dialogPage.newMessageText = ''
             this._rerenderEntireTree(this._state)
-        }else if (action.type === 'SEND-NEW-MESSAGE') {
+        } else if (action.type === SEND_NEW_MESSAGE) {
             this._state.dialogPage.newMessageText = action.content
             this._rerenderEntireTree(this._state)
         }
     }
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostActionCreator = (text) => 
+    ({type: UPDATE_NEW_POST_TEXT, content: text})
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
+export const sendMessageActionCreator = (text) => 
+    ({type: SEND_NEW_MESSAGE, content: text})
 
 window.store = store
 export default store

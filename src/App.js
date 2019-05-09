@@ -18,10 +18,10 @@ const App = props => {
           <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
           <Route path='/dialogs' render={() => <Dialogs dialogPage={props.state.dialogPage} dispatch={props.dispatch} />} />
           <Route path='/news' component={News} />
-          <Route path='/music' component={Music} />
+          <Route path='/music' component={Music} /> 
           <Route path='/settings' component={Settings} />
         </div>
-      </div>
+      </div>   //Route
   );
 }
 
