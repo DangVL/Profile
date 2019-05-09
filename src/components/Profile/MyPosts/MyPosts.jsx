@@ -5,7 +5,7 @@ import {addPostCreator, updateNewPostCreator} from "../../../redux/profile-reduc
 
 const MyPosts = props => {
     let postsElement = props.posts.map(el => {
-        return <Post message = {el.message} likesCount = {el.likesCount} />
+        return <Post message={el.message} likesCount={el.likesCount}/>
     })
 
     let newPostElement = React.createRef()
@@ -26,10 +26,10 @@ const MyPosts = props => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea onChange={onPostChange} 
-                                ref={newPostElement}
-                                placeholder = 'Write something'
-                                value={props.newPostText} />
+                    <textarea onChange={onPostChange}
+                              ref={newPostElement}
+                              placeholder='Write something'
+                              value={props.newPostText}/>
                 </div>
                 <div className={s.button}>
                     <button onClick={addPost}>Add Post</button>
