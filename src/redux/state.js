@@ -1,8 +1,6 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const ADD_MESSAGE = 'ADD-MESSAGE'
-const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
-
+import dialogReducer from "./dialog-reducer";
+import profileReducer from "./profile-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 let store = {
     _state: {
@@ -12,7 +10,7 @@ let store = {
                 { id: 2, message: 'Javascript', likesCount: 15 },
                 { id: 3, message: 'Wow', likesCount: 0 }
             ],
-            newPostText: 'Write something'
+            newPostText: ''
         },
         dialogPage: {
             dialogs: [
@@ -30,7 +28,8 @@ let store = {
                 { id: 5, message: 'Kabzda' }
             ],
             newMessageText: 'That\'s work'
-        }
+        },
+        sidebar: {}
     },
 
     getState() {
@@ -46,39 +45,12 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: this._state.profilePage.posts[this._state.profilePage.posts.length - 1].id + 1,
-                message: this._state.profilePage.newPostText,  //this._state ???
-                likesCount: 0
-            }
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._rerenderEntireTree(this._state)
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.content
-            this._rerenderEntireTree(this._state)
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage = {
-                id: this._state.dialogPage.messages[this._state.dialogPage.messages.length - 1].id + 1,
-                message: this._state.dialogPage.newMessageText
-            }
-            this._state.dialogPage.messages.push(newMessage)
-            this._state.dialogPage.newMessageText = ''
-            this._rerenderEntireTree(this._state)
-        } else if (action.type === SEND_NEW_MESSAGE) {
-            this._state.dialogPage.newMessageText = action.content
-            this._rerenderEntireTree(this._state)
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar,action)
+
+        this._rerenderEntireTree(this._state)
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostActionCreator = (text) => 
-    ({type: UPDATE_NEW_POST_TEXT, content: text})
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
-export const sendMessageActionCreator = (text) => 
-    ({type: SEND_NEW_MESSAGE, content: text})
-
-window.store = store
 export default store
