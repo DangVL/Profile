@@ -3,8 +3,7 @@ import {addPostCreator, updateNewPostCreator} from "../../../redux/profile-reduc
 import MyPosts from "./MyPosts";
 
 const MyPostsContainer = (props) => {
-    let state = props.store.getState()
-
+    let state = props.store.getState().profilePage //???
     let addPost = () => {
         props.store.dispatch(addPostCreator())
     }
@@ -16,9 +15,8 @@ const MyPostsContainer = (props) => {
 
     return <MyPosts addPostCreator={addPost} 
                     updateNewPostCreator={onPostChange}
-                    newPostText={state.profilePage.newPostText} 
-                    posts={state.profilePage.posts}
-         />
+                    //store={props.store} 
+                    store={state}/>
 }
 
 export default MyPostsContainer

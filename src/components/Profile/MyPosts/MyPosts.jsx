@@ -1,9 +1,11 @@
 import React from 'react';
-import s from './MyPosts.module.css'
 import Post from './Post/Post'
+import s from './MyPosts.module.css'
 
 const MyPosts = props => {
-    let postsElement = props.posts.map(el => {
+    //let state = props.store.getState()
+    let state = props.store
+    let postsElement = state.posts.map(el => {
         return <Post message={el.message} likesCount={el.likesCount}/>
     })
 
@@ -26,7 +28,7 @@ const MyPosts = props => {
                     <textarea onChange={onPostChange}
                               ref={newPostElement}
                               placeholder='Write something'
-                              value={props.newPostText}/>
+                              value={state.newPostText}/>
                 </div>
                 <div className={s.button}>
                     <button onClick={addPost}>Add Post</button>
