@@ -4,15 +4,14 @@ import s from './MyPosts.module.css'
 
 const MyPosts = props => {
     //let state = props.store.getState()
-    let state = props.store
-    let postsElement = state.posts.map(el => {
+    let postsElement = props.posts.map(el => {
         return <Post message={el.message} likesCount={el.likesCount}/>
     })
 
     let newPostElement = React.createRef()
 
-    let addPost = () => {
-        props.addPostCreator()
+    let OnAddPost = () => {
+        props.addPost()
     }
 
     let onPostChange = () => {
@@ -28,10 +27,10 @@ const MyPosts = props => {
                     <textarea onChange={onPostChange}
                               ref={newPostElement}
                               placeholder='Write something'
-                              value={state.newPostText}/>
+                              value={props.newPostText}/>
                 </div>
                 <div className={s.button}>
-                    <button onClick={addPost}>Add Post</button>
+                    <button onClick={OnAddPost}>Add Post</button>
                 </div>
             </div>
             <div className={s.posts}>
