@@ -6,9 +6,9 @@ import Profile from './components/Profile/Profile';
 import News from './components/Navbar/News/News'
 import Music from './components/Navbar/Music/Music'
 import Settings from './components/Navbar/Settings/Settings'
-import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Navbar/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import {Route} from "react-router-dom";
 
 
 
