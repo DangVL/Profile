@@ -17,6 +17,7 @@ const Dialogs = (props) => {
         //props.dispatch(sendMessageCreator(messageText))
         props.sendMessageCreator(messageText)
     }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>

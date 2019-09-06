@@ -13,7 +13,8 @@ import {Provider} from "react-redux";
             <Provider store={store}>
                 <App />
             </Provider>
-        </BrowserRouter>, document.getElementById('root'));
+        </BrowserRouter>,
+        document.getElementById('root'));
 
 
 
